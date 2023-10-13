@@ -1,0 +1,40 @@
+<div class="card" *ngIf="session; else sessionNull" appBorderCard="#B5FBB7">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{session.label != null ? session.label : ""}} | &nbsp;<span
+        class="tag {{session.test.label | tagColor}}">{{session.test.label}}</span> &nbsp;
+      <span class="tag {{session.level.label | tagColor}}">{{session.level.label}}</span> &nbsp; {{session.date | date:
+      'dd/MM/yyyy'}}
+    </p>
+    <button class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {{session.description}}
+      <br>
+    </div>
+    <div class="content">
+      <p> <strong>Nombre de places restantes : </strong>{{ session.nbPlaces - session.nbInscrit == 0 ? 'COMPLET' :
+        (session.nbPlaces - session.nbInscrit)}}</p>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <a routerLink="/sessions/{{session._id}}" routerLinkActive="active" class="card-footer-item">Détail</a>
+    <a *ngIf="UserRole == 'ADMIN' " routerLink="/sessions/edit/{{session._id}}" routerLinkActive="active"
+      class="card-footer-item">Edit</a>
+    <a *ngIf="UserRole == 'ADMIN' " routerLink="/sessions" routerLinkActive="active" (click)='deleteSession(session)'
+      class="card-footer-item">Delete</a>
+  </footer>
+</div>
+<br><br>
+
+<ng-template #sessionNull>
+  <div class="notification is-warning">
+    <button class="delete"></button>
+    Aucune session sélectionnée
+  </div>
+</ng-template>

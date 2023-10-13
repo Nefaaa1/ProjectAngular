@@ -1,0 +1,14 @@
+<header>
+  <p>{{ heure | async | date: 'HH:mm:ss' }}</p>
+</header>
+
+<div class="columns">
+  <div class="column">
+    <app-menu />
+  </div>
+  <div class="column">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="column">
+  </div>
+</div>

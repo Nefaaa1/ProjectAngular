@@ -1,0 +1,16 @@
+<h1 class="title">{{titlePage}}</h1>
+<app-paginate></app-paginate>
+<div *ngIf="sessions.length != 0; else sessionNull">
+  <div *ngFor="let session of sessions">
+    <sessionCard [session]="session" (sessionDeleted)="onSessionDeleted($event)" />
+  </div>
+</div>
+
+
+
+<ng-template #sessionNull>
+  <div class=" notification is-warning">
+    <button class="delete"></button>
+    Aucune session d'enregistrée
+  </div>
+</ng-template>

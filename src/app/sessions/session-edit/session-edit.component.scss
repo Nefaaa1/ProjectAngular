@@ -1,0 +1,19 @@
+fieldset {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    align-content: center;
+}
+
+fieldset label {
+    width: 35%;
+}
+
+fieldset textarea,
+fieldset input {
+    width: 100%;
+}
+
+fieldset textarea {
+    height: 80px;
+}

@@ -1,0 +1,32 @@
+<h1 class="title">{{titlePage}}</h1>
+
+<div *ngIf="users.length != 0; else usersNull">
+    <div *ngFor="let user of users" appBorderUser="#FBA3A3">
+        <header class="card-header">
+            <p class="card-header-title">
+                {{user.username}}
+            </p>
+            <button class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+            </button>
+        </header>
+
+        <footer class="card-footer">
+            <a routerLink="/users/{{user._id}}" routerLinkActive="active" class="card-footer-item">Détail</a>
+            <a *ngIf="UserRole == 'ADMIN' " routerLink="/users/edit/{{user._id}}" routerLinkActive="active"
+                class="card-footer-item">Edit</a>
+            <a *ngIf="UserRole == 'ADMIN' " routerLink="/users" routerLinkActive="active" (click)="deleteUser(user)"
+                class="card-footer-item">Delete</a>
+        </footer>
+    </div>
+</div>
+
+
+<ng-template #usersNull>
+    <div class="notification is-warning">
+        <button class="delete"></button>
+        Aucun utilisateur enregistré
+    </div>
+</ng-template>

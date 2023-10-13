@@ -1,0 +1,33 @@
+<h1 class="title">{{titlePage}}</h1>
+
+<form *ngIf="user">
+    <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="user.username" name="username" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="user.email" name="email" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="user.password" name="password" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Rôle</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="user.role" name="role" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <button type="submit" (click)="updateuser()" class="button">Modifier</button>
+</form>

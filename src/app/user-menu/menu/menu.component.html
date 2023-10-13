@@ -1,0 +1,22 @@
+<aside class="menu m-4" *ngIf="UserConnexion()">
+    <p class="menu-label">
+        General
+    </p>
+    <ul class="menu-list">
+        <li>
+            <a class="navbar-brand" routerLink="/sessions" routerLinkActive="active">Sessions</a>
+            <ul *ngIf="UserRole == 'ADMIN' ">
+                <li> <a routerLink="/sessionscreate" routerLinkActive="active">Ajouter Session</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="navbar-brand" routerLink="/users" routerLinkActive="active">Utilisateur</a>
+            <ul *ngIf="UserRole == 'ADMIN' ">
+                <li> <a routerLink="/userscreate" routerLinkActive="active">Ajouter un Utilisateur</a></li>
+            </ul>
+        </li>
+    </ul>
+    <p class="menu-label">
+        <button (click)="Deconnexion()" class="button is-info is-rounded">Déconnexion</button>
+    </p>
+</aside>

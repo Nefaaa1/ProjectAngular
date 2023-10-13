@@ -1,0 +1,10 @@
+.listeUser ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.listeUser ul li+li {
+    border-top: dashed 1px gray;
+}

@@ -1,0 +1,24 @@
+<div class="card" *ngIf="user; else sessionNull">
+    <div class="card-content">
+        <p class="title">
+            {{ user.username }}
+        </p>
+        <p>
+
+        </p>
+        <p>
+            <strong>Rôles:</strong> {{ user.role }}
+        </p>
+        <p>
+            <strong>Email:</strong> {{ user.email }}
+        </p>
+    </div>
+</div>
+
+
+<ng-template #sessionNull>
+    <div class="notification is-warning">
+        <button class="delete"></button>
+        Aucune session sélectionnée
+    </div>
+</ng-template>

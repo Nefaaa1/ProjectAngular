@@ -1,0 +1,36 @@
+<h1 class="title">{{titlePage}}</h1>
+
+<form (ngSubmit)="ajoutuser()">
+    <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="newUser.username" name="username" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="newUser.email" name="email" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="newUser.password" name="password" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Rôle</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="newUser.role" name="role" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <button type="submit" class="button">Ajouter</button>
+    <div *ngIf="userCreate" class="notification is-success m-4">
+        L'utilisateur a bien été ajouter !
+    </div>
+</form>

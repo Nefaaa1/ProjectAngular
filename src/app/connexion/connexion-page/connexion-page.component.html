@@ -1,0 +1,30 @@
+<form (ngSubmit)="logUser()">
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input" [(ngModel)]="userConnexion.email" name="email" type="email" placeholder="Email input"
+                value="">
+            <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+            </span>
+        </div>
+        <p *ngIf="emailOK" class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <p class="control has-icons-left">
+            <input class="input" [(ngModel)]="userConnexion.password" name="password" type="password"
+                placeholder="Password">
+            <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+            </span>
+        </p>
+    </div>
+
+    <button type="submit" class="button is-info is-rounded">Connexion</button>
+
+</form>
+
+<div *ngIf="connexionReussi" class="notification is-success m-5">
+    Connexion réussie !
+</div>

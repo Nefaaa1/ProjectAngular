@@ -1,0 +1,75 @@
+<h1 class="title">{{titlePage}}</h1>
+
+<form *ngIf="session">
+    <div class="field">
+        <label class="label">Nom</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="session.label" name="label" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+            <textarea class="textarea" [(ngModel)]="session.description" name="description" type="text"></textarea>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Date</label>
+        <div class="control">
+            <input class="input" [(ngModel)]="session.date" name="date" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Capacitée </label>
+        <div class="control">
+            <input class="input" [(ngModel)]="session.nbPlaces" name="nbPlaces" type="text" placeholder="Text input">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Institut </label>
+        <div class="select">
+            <select [(ngModel)]="session.institut._id" name="institut">
+                <option value="">Séléctionner une institut</option>
+                <option *ngFor="let institut of instituts" [ngValue]="institut._id">{{ institut.label }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Examen </label>
+        <div class="control">
+            <input class="input" [(ngModel)]="session.exams" name="exams" type="text" placeholder="Text input">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Level </label>
+        <div class="select">
+            <select [(ngModel)]="session.level._id" name="level">
+                <option value="">Séléctionner un level</option>
+                <option *ngFor="let level of levels" [ngValue]="level._id">{{ level.label }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Test </label>
+        <div class="select">
+            <select [(ngModel)]="session.test._id" name="test">
+                <option value="">Séléctionner un test</option>
+                <option *ngFor="let test of tests" [ngValue]="test._id">{{ test.label }}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="button" (click)="updateSession()">Modifier</button>
+</form>
+
+
+<ng-template #sessionNull>
+    <div class="notification is-warning">
+        <button class="delete"></button>
+        Aucune session sélectionnée
+    </div>
+</ng-template>

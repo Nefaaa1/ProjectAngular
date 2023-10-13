@@ -1,0 +1,64 @@
+<div class="card" *ngIf="session; else sessionNull">
+  <div class="card-content">
+    <p class="title">
+      {{ session.label }}
+    </p>
+    <p>
+      <span class="tag {{session.test.label | tagColor}}">{{session.test.label}}</span> &nbsp; <span
+        class="tag {{session.level.label | tagColor}}">{{session.level.label}}</span>
+    </p>
+    <p>
+      {{ session.description }}
+    </p>
+    <p>
+      <strong>Date:</strong> {{ session.date | date: 'dd/MM/yyyy' }}
+    </p>
+    <p>
+      <strong>Nombre de places:</strong> {{ session.nbPlaces }}
+    </p>
+    <p>
+      <strong>Nombre d'inscrits:</strong> {{ session.nbInscrit }}
+    </p>
+  </div>
+</div>
+<div class="m-4">
+  <form name="addUserSession" (ngSubmit)="addUserToSession()">
+    <div class="select m-1">
+      <select name="user_id" [(ngModel)]="user_id">
+        <option [ngValue]="null">Séléctionner un utilisateur</option>
+        <option *ngFor="let user of users" [ngValue]="user._id">{{ user.username }}</option>
+      </select>
+    </div>
+    <button type="submit" class="button is-primary m-1">
+      Ajouter utilisateur
+    </button>
+  </form>
+</div>
+
+<div class="card" *ngIf="session; else sessionNull">
+  <header class="card-header">
+    <p class="card-header-title">
+      Liste inscrit
+    </p>
+
+  </header>
+  <div class="card-content listeUser">
+    <ul>
+      <li *ngFor="let user of sessionInscrit">{{ user.username }} <button (click)="deleteInscrit(user._id)"
+          class="button is-danger">X</button></li>
+    </ul>
+  </div>
+
+
+</div>
+
+<div *ngIf="sessionComplete" class="notification is-danger m-1">
+  La session est complète. Aucune inscription supplémentaire n'est possible.
+</div>
+
+<ng-template #sessionNull>
+  <div class="notification is-warning">
+    <button class="delete"></button>
+    Aucune session sélectionnée !
+  </div>
+</ng-template>
